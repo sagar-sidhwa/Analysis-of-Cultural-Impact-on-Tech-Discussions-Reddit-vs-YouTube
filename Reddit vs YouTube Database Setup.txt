@@ -1,0 +1,157 @@
+//Postgre Sql Properties(Default)
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'socialgood',
+        'USER': 'postgres',
+        'PASSWORD': 'socialgood',
+        'HOST': 'localhost',  # Set to the host where your PostgreSQL server is running
+        'PORT': '5432',       # Set to the port used by your PostgreSQL server
+    }
+}
+
+
+//For Linux Terminal 
+
+1 - Check postgresql is installed or not - "psql --version"
+2 - 	2.1 Open Postgre sql (user) Terminal in Linux - "sudo su postgres" (Here "postgres" is database name)
+	2.2 Enter Password - "<your password>"
+	2.3 Open Postgres command shell - "psql"
+	2.4 Command to open other database instead of postgres - "psql -d socialgood" (Here "socialgood" is existing database)
+3 - To Exit the Postgres command shell - "\q"
+4 - To Exit from the Postgre sql (user) Terminal - "exit"
+5 - To check all the databases present in the postgres - "\l"
+6 - To change the DB - "\c socialgood" (Here "socialgood" is the name of the database)
+7 - To check the available tables in database "\dt"
+8 - To delete a database in postgresql - "DROP DATABASE socialgood"
+9 - Command to create a database in postgresql (First Follow Step 1 and 2.1 2.2) and then  - "createdb socialgood" (Here "socialgood" is database name)
+
+
+//Reddit Tables
+
+CREATE TABLE subreddits
+(
+    s_id SERIAL PRIMARY KEY,
+    subreddit_date_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    subreddit_title VARCHAR(255),
+    subreddit_name VARCHAR(255),
+    subreddit_id VARCHAR(255) UNIQUE,
+    subreddit_url TEXT,
+    subreddit_description TEXT,
+    subreddit_subscribers BIGINT,
+    subreddit_data JSON
+);
+
+CREATE TABLE subreddit_posts
+(
+    p_id SERIAL PRIMARY KEY,
+    post_date_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    post_id VARCHAR(255) UNIQUE,
+    subreddit_id VARCHAR(255) REFERENCES subreddits(subreddit_id),
+    subreddit_url TEXT,
+    post_name VARCHAR(255),
+    post_url TEXT,
+    post_title TEXT,
+    post_data JSON,
+    post_categorized INTEGER DEFAULT 0,
+    post_class VARCHAR(50) DEFAULT '',
+    post_confidence NUMERIC(10, 9) DEFAULT 0.0
+);
+
+CREATE TABLE subreddit_posts_comments
+(
+    c_id SERIAL PRIMARY KEY,
+    comment_date_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    comment_id VARCHAR(255) UNIQUE,
+    post_id VARCHAR(255) REFERENCES subreddit_posts(post_id),
+    post_name VARCHAR(255),
+    post_url TEXT,
+    subreddit_id VARCHAR(255) REFERENCES subreddits(subreddit_id),
+    subreddit_name VARCHAR(255),
+    subreddit_url TEXT,
+    comment_body TEXT,
+    comment_data JSON,
+    comment_categorized INTEGER DEFAULT 0,
+    comment_class VARCHAR(50) DEFAULT '',
+    comment_confidence NUMERIC(10, 9) DEFAULT 0.0
+);
+
+CREATE TABLE subreddit_posts_comments_replies
+(
+    r_id SERIAL PRIMARY KEY,
+    reply_id VARCHAR(255) UNIQUE,
+    comment_id VARCHAR(255) REFERENCES subreddit_posts_comments(comment_id),
+    post_id VARCHAR(255) REFERENCES subreddit_posts(post_id),
+    post_name VARCHAR(255),
+    post_comment_url TEXT,
+    subreddit_id VARCHAR(255) REFERENCES subreddits(subreddit_id),
+    subreddit_name VARCHAR(255),
+    subreddit_url TEXT,
+    reply_body TEXT,
+    reply_data JSON
+);
+
+
+//YouTube Tables
+
+CREATE TABLE youtube_channels
+(
+yc_id SERIAL PRIMARY KEY,
+yc_date_time timestamp DEFAULT CURRENT_TIMESTAMP,
+yc_name_title VARCHAR(255),
+youtube_channel_id VARCHAR(255) UNIQUE,
+yc_url TEXT,
+yc_custom_url TEXT,
+yc_description TEXT,
+yc_data JSON
+);
+
+
+CREATE TABLE youtube_channel_videos
+(
+    ycv_id SERIAL PRIMARY KEY,
+    ycv_date_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    ycvideo_id VARCHAR(255) UNIQUE,
+    youtube_channel_id VARCHAR(255) REFERENCES youtube_channels(youtube_channel_id),
+    yc_name_title VARCHAR(255),
+    yc_url TEXT,
+    ycv_name_title TEXT,
+    ycv_url TEXT,
+    ycv_description TEXT,
+    ycv_data JSON,
+    ycv_categorized INTEGER DEFAULT 0,
+    ycv_class VARCHAR(50) DEFAULT '',
+    ycv_confidence NUMERIC(10, 9) DEFAULT 0.0
+);
+
+CREATE TABLE youtube_videos_comments
+(
+    ycvc_id SERIAL PRIMARY KEY,
+    ycvc_date_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    ycvcomment_id VARCHAR(255) UNIQUE,
+    ycvideo_id VARCHAR(255) REFERENCES youtube_channel_videos(ycvideo_id),
+    ycv_url TEXT,
+    youtube_channel_id VARCHAR(255) REFERENCES youtube_channels(youtube_channel_id),
+    yc_url TEXT,
+    ycvc_body TEXT,
+    ycvc_data JSON,
+    ycvc_categorized INTEGER DEFAULT 0,
+    ycvc_class VARCHAR(50) DEFAULT '',
+    ycvc_confidence NUMERIC(10, 9) DEFAULT 0.0
+);
+
+
+//Data Collected Count Table
+
+CREATE TABLE data_collected_count
+(
+dcc_id SERIAL PRIMARY KEY,
+dcc_date_time timestamp DEFAULT CURRENT_TIMESTAMP,
+subreddits_count INT,
+subreddit_posts_count INT,
+subreddit_comments_count INT,
+youtube_channels_count INT,
+youtube_videos_count INT,
+youtube_comments_count INT,
+);

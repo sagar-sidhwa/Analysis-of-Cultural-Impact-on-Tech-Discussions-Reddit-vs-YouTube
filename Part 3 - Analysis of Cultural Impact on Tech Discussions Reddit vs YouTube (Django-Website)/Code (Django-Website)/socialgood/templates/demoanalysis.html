@@ -1,0 +1,564 @@
+<!-- demoanalysis.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Analysis Dashboard</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        /* Custom styles for the graph cards */
+        .graph-card {
+            margin-bottom: 20px;
+        }
+        /* Add this to your CSS or in a <style> tag in your HTML head */
+            .description-overlay {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                background-color: rgba(255, 255, 255, 0.8);
+                padding: 10px;
+                border-radius: 5px;
+                text-align: center;
+                display: none;
+            }
+            
+            .card:hover .description-overlay {
+                display: block;
+            }
+
+            .loader {
+                display: none;
+            }
+            .loader-container {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+            }
+            .loader {
+                border: 16px solid #f3f3f3; /* Light grey */
+                border-top: 16px solid #3498db; /* Blue */
+                border-radius: 50%;
+                margin-top: 10px;
+                width: 100px;
+                height: 100px;
+                animation: spin 2s linear infinite;
+            } 
+
+            .loader1 {
+                display: none;
+            }
+            .loader1 {
+                border: 16px solid #f3f3f3; /* Light grey */
+                border-top: 16px solid #3498db; /* Blue */
+                border-radius: 50%;
+                margin-top: 10px;
+                width: 100px;
+                height: 100px;
+                animation: spin 2s linear infinite;
+            }
+            .loader2 {
+                display: none;
+            }
+            .loader2 {
+                border: 16px solid #f3f3f3; /* Light grey */
+                border-top: 16px solid #3498db; /* Blue */
+                border-radius: 50%;
+                margin-top: 10px;
+                width: 100px;
+                height: 100px;
+                animation: spin 2s linear infinite;
+            }
+            .loader3 {
+                display: none;
+            }
+            .loader3 {
+                border: 16px solid #f3f3f3; /* Light grey */
+                border-top: 16px solid #3498db; /* Blue */
+                border-radius: 50%;
+                margin-top: 10px;
+                width: 100px;
+                height: 100px;
+                animation: spin 2s linear infinite;
+            }
+
+            .loader4 {
+                display: none;
+            }
+            .loader4 {
+                border: 16px solid #f3f3f3; /* Light grey */
+                border-top: 16px solid #3498db; /* Blue */
+                border-radius: 50%;
+                margin-top: 10px;
+                width: 100px;
+                height: 100px;
+                animation: spin 2s linear infinite;
+            }
+
+            .loader5 {
+                display: none;
+            }
+            .loader5 {
+                border: 16px solid #f3f3f3; /* Light grey */
+                border-top: 16px solid #3498db; /* Blue */
+                border-radius: 50%;
+                margin-top: 10px;
+                width: 100px;
+                height: 100px;
+                animation: spin 2s linear infinite;
+            }
+
+            .loader6 {
+                display: none;
+            }
+            .loader6 {
+                border: 16px solid #f3f3f3; /* Light grey */
+                border-top: 16px solid #3498db; /* Blue */
+                border-radius: 50%;
+                margin-top: 10px;
+                width: 100px;
+                height: 100px;
+                animation: spin 2s linear infinite;
+            }
+
+            .loader7 {
+                display: none;
+            }
+            .loader7 {
+                border: 16px solid #f3f3f3; /* Light grey */
+                border-top: 16px solid #3498db; /* Blue */
+                border-radius: 50%;
+                margin-top: 10px;
+                width: 100px;
+                height: 100px;
+                animation: spin 2s linear infinite;
+            }
+
+            .loader8 {
+                display: none;
+            }
+            .loader8 {
+                border: 16px solid #f3f3f3; /* Light grey */
+                border-top: 16px solid #3498db; /* Blue */
+                border-radius: 50%;
+                margin-top: 10px;
+                width: 100px;
+                height: 100px;
+                animation: spin 2s linear infinite;
+            }
+
+            .loader9 {
+                display: none;
+            }
+            .loader9 {
+                border: 16px solid #f3f3f3; /* Light grey */
+                border-top: 16px solid #3498db; /* Blue */
+                border-radius: 50%;
+                margin-top: 10px;
+                width: 100px;
+                height: 100px;
+                animation: spin 2s linear infinite;
+            }
+
+            .loader10 {
+                display: none;
+            }
+            .loader10 {
+                border: 16px solid #f3f3f3; /* Light grey */
+                border-top: 16px solid #3498db; /* Blue */
+                border-radius: 50%;
+                margin-top: 10px;
+                width: 100px;
+                height: 100px;
+                animation: spin 2s linear infinite;
+            }
+
+            .loader11 {
+                display: none;
+            }
+            .loader11 {
+                border: 16px solid #f3f3f3; /* Light grey */
+                border-top: 16px solid #3498db; /* Blue */
+                border-radius: 50%;
+                margin-top: 10px;
+                width: 100px;
+                height: 100px;
+                animation: spin 2s linear infinite;
+            }
+            @keyframes spin {
+                0% { transform: rotate(0deg); }
+                100% { transform: rotate(360deg); }
+              }
+            
+    </style>
+</head>
+<body>
+
+{% extends 'index.html' %}
+{% block content %}
+    <style>
+    .card-img-top {
+        width: 100%;
+        height: 20rem;
+        object-fit: cover;
+    }
+    .info {
+        background-color: #e7f3fe;
+        border-left: 6px solid #2196F3;
+      }
+
+    /* Dashed border */
+    hr.dashed {
+    border-top: 3px dashed #bbb;
+    }
+    </style>
+    <hr>
+    <div class="jumbotron jumbotron-fluid bg-dark text-white">
+        <div class="container">
+        <h1>(Socialgood) Project 2 Implementation Details</h1>
+        <h3>Analysis That we have Carried in the Past Project of Socialgood Data Analysis...</h3>
+        </div>
+    </div>
+
+    <div class="container info">
+        <h3><strong>This is the Analysis done till now... </strong></h3>
+      </div>
+
+    <hr>
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card mb-4 text-center">
+                {% load static %}
+                <img src="{% static 'da.jpg' %}" alt="Reddit Posts Count vs Youtube Video Count (Number of New Entries per Day)" class="card-img-top">
+                <div class="loader-container">
+                    <div class="loader1"></div>
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">Reddit Posts Count vs Youtube Video Count (Number of New Entries per Day)</h5>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <button type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#modalImage1">
+                            View Statistics
+                            </button>
+                        </div>
+                        <div class="col-md-6">
+                            <button type="button" class="btn btn-dark btn-block" id="da" data-url="{% url 'da' %}">
+                            Refresh
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Add another card here (copy the above code) -->
+
+        <div class="col-md-6">
+            <div class="card mb-4 text-center">
+                {% load static %}
+                <div class="position-relative">
+                    <img src="{% static 'db.jpg' %}" alt="Reddit Comments Count vs Youtube Video Comments Count (Number of New Entries per Day)" class="card-img-top">
+                    <div class="loader-container">
+                        <div class="loader2"></div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">Reddit Comments Count vs Youtube Video Comments Count (Number of New Entries per Day)</h5>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <button type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#modalImage2">
+                            View Statistics
+                            </button>
+                        </div>
+                        <div class="col-md-6">
+                            <button type="button" class="btn btn-dark btn-block" id="db" data-url="{% url 'db' %}">
+                            Refresh
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <hr class="dashed">
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card mb-4 text-center">
+                {% load static %}
+                <img src="{% static 'dc.jpg' %}" alt="Classification of Reddit Posts from ModerateHatespeech" class="card-img-top">
+                <div class="loader-container">
+                    <div class="loader3"></div>
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">Classification of Reddit Posts from ModerateHatespeech</h5>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <button type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#modalImage3">
+                            View Statistics
+                            </button>
+                        </div>
+                        <div class="col-md-6">
+                            <button type="button" class="btn btn-dark btn-block" id="dc" data-url="{% url 'dc' %}">
+                            Refresh
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Add another card here (copy the above code) -->
+
+        <div class="col-md-6">
+            <div class="card mb-4 text-center">
+                {% load static %}
+                <div class="position-relative">
+                    <img src="{% static 'dd.jpg' %}" alt="Classification of Youtube Videos from ModerateHatespeech" class="card-img-top">
+                    <div class="loader-container">
+                        <div class="loader4"></div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">Classification of Youtube Videos from ModerateHatespeech</h5>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <button type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#modalImage4">
+                            View Statistics
+                            </button>
+                        </div>
+                        <div class="col-md-6">
+                            <button type="button" class="btn btn-dark btn-block" id="dd" data-url="{% url 'dd' %}">
+                            Refresh
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <hr class="dashed">
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card mb-4 text-center">
+                {% load static %}
+                <img src="{% static 'de.jpg' %}" alt="Classification of Reddit Comments from Moderate Hatespeech" class="card-img-top">
+                <div class="loader-container">
+                    <div class="loader5"></div>
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">Classification of the Reddit Comments from Moderate Hatespeech</h5>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <button type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#modalImage5">
+                            View Statistics
+                            </button>
+                        </div>
+                        <div class="col-md-6">
+                            <button type="button" class="btn btn-dark btn-block" id="de" data-url="{% url 'de' %}">
+                            Refresh
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Add another card here (copy the above code) -->
+
+        <div class="col-md-6">
+            <div class="card mb-4 text-center">
+                {% load static %}
+                <div class="position-relative">
+                    <img src="{% static 'df.jpg' %}" alt="Classification of Youtube Comments from ModerateHatespeech" class="card-img-top">
+                    <div class="loader-container">
+                        <div class="loader6"></div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">Classification of the Youtube Comments from Moderate Hatespeech</h5>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <button type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#modalImage6">
+                            View Statistics
+                            </button>
+                        </div>
+                        <div class="col-md-6">
+                            <button type="button" class="btn btn-dark btn-block" id="df" data-url="{% url 'df' %}">
+                            Refresh
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <hr class="dashed">
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card mb-4 text-center">
+                {% load static %}
+                <img src="{% static 'dg.jpg' %}" alt="Reddit Posts Content Popularity Analysis" class="card-img-top">
+                <div class="loader-container">
+                    <div class="loader7"></div>
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">Reddit Posts Content Popularity Analysis</h5>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <button type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#modalImage7">
+                            View Statistics
+                            </button>
+                        </div>
+                        <div class="col-md-6">
+                            <button type="button" class="btn btn-dark btn-block" id="dg" data-url="{% url 'dg' %}">
+                            Refresh
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Add another card here (copy the above code) -->
+
+        <div class="col-md-6">
+            <div class="card mb-4 text-center">
+                {% load static %}
+                <div class="position-relative">
+                    <img src="{% static 'dh.jpg' %}" alt="Youtube Videos Content Popularity Analysis" class="card-img-top">
+                    <div class="loader-container">
+                        <div class="loader8"></div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">Youtube Videos Content Popularity Analysis</h5>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <button type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#modalImage8">
+                            View Statistics
+                            </button>
+                        </div>
+                        <div class="col-md-6">
+                            <button type="button" class="btn btn-dark btn-block" id="dh" data-url="{% url 'dh' %}">
+                            Refresh
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <hr class="dashed">
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card mb-4 text-center">
+                {% load static %}
+                <img src="{% static 'di.jpg' %}" alt="Sentiment Analysis of Reddit Comments and Youtube Comments" class="card-img-top">
+                <div class="loader-container">
+                    <div class="loader9"></div>
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">Sentiment Analysis of Reddit Comments and Youtube Comments</h5>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <button type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#modalImage9">
+                            View Statistics
+                            </button>
+                        </div>
+                        <div class="col-md-6">
+                            <button type="button" class="btn btn-dark btn-block" id="di" data-url="{% url 'di' %}">
+                            Refresh
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Add another card here (copy the above code) -->
+
+        <div class="col-md-6">
+            <div class="card mb-4 text-center">
+                {% load static %}
+                <div class="position-relative">
+                    <img src="{% static 'dj.jpg' %}" alt="Subreddit Engagement Metrics Analysis (Engagement of Subscribers with respect to Comments)" class="card-img-top">
+                    <div class="loader-container">
+                        <div class="loader10"></div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">Subreddit Engagement Metrics Analysis (Engagement of Subscribers with respect to Comments)</h5>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <button type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#modalImage10">
+                            View Statistics
+                            </button>
+                        </div>
+                        <div class="col-md-6">
+                            <button type="button" class="btn btn-dark btn-block" id="dj" data-url="{% url 'dj' %}">
+                            Refresh
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <hr class="dashed">
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card mb-4 text-center">
+                {% load static %}
+                <img src="{% static 'dk.jpg' %}" alt="Youtube Engagement Metrics Analysis (Engagement of Subscribers with respect to Comments)" class="card-img-top">
+                <div class="loader-container">
+                    <div class="loader11"></div>
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">Youtube Engagement Metrics Analysis (Engagement of Subscribers with respect to Comments)</h5>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <button type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#modalImage11">
+                            View Statistics
+                            </button>
+                        </div>
+                        <div class="col-md-6">
+                            <button type="button" class="btn btn-dark btn-block" id="dk" data-url="{% url 'dk' %}">
+                            Refresh
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <hr class="dashed">
+
+
+
+    {% load static %}
+    {% include 'model.html' %}
+<!--<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>-->
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>\
+{% load static %}
+<script src="{% static '/scripts/demoscript.js' %}"></script>
+
+{% endblock %}
+</body>
+</html>

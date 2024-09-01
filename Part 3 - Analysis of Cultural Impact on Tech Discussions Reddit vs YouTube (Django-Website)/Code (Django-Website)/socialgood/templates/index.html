@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <title>Socialgood Analysis Dashboard</title>
+    <style>
+        /* Add custom styles here */
+        body {
+            padding-top: 56px; /* Adjusted for fixed navbar height */
+        }
+        footer {
+            background-color: #343a40;
+            color: white;
+            text-align: center;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+            padding : 0;
+        }
+    </style>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <a class="navbar-brand" href="/">Socialgood Analysis Dashboard<span class="sr-only">(current)</span></a></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="/analysis">Project 3 Implementation</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/demoanalysis">Project 2 Implementation</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+
+
+{% block content %}
+
+<hr>
+<!--
+<div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+    <div class="carousel-inner">
+    <div class="carousel-item active">
+        {% load static %}
+        <img src="{% static 'sa.jpg' %}" class="d-block w-100" style="width: 400px; height:500px;" alt="1">
+    </div>
+    <div class="carousel-item">
+        {% load static %}
+        <img src="{% static 'sb.jpg' %}" class="d-block w-100" style="width: 400px; height:500px;" alt="2">
+    </div>
+    <div class="carousel-item">
+        {% load static %}
+        <img src="{% static 'sc.jpg' %}" class="d-block w-100" style="width: 400px; height:500px;" alt="3">
+    </div>
+    </div>
+    <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+    </a>
+</div>
+-->
+<div class="container">
+    <div class="row align-items-center">
+    <div class="col-lg-6">
+        <div class="p-5">
+            {% load static %}
+            <img class="img-fluid" src="{% static 'sdb.jpg' %}" alt="b">
+        </div>
+    </div>
+    <div class="col-lg-6">
+        <div class="p-5">
+        <h2 class="display-4">Content Popularity Analysis:</h2>
+        <p>We analyze the plethora of
+            tech topics discussed daily to understand what’s trending across
+            platforms. Our approach involves quantitative analysis of post and video titles on Reddit and YouTube, helping us pinpoint trending
+            tech subjects or products. This analysis is crucial in identifying
+            the most influential and widely discussed tech topics in different contexts.</p>
+        </div>
+    </div>
+    </div>
+</div>
+
+
+<hr>
+<div class="container">
+    <div class="row align-items-center">
+    <div class="col-lg-6 order-lg-2">
+        <div class="p-5">
+            {% load static %}
+            <img class="img-fluid" src="{% static 'sda.jpg' %}" alt="c">
+        </div>
+    </div>
+    <div class="col-lg-6 order-lg-1">
+        <div class="p-5">
+        <h2 class="display-4">Collected DATA Analysis : </h2>
+        <p>
+            Our data tracking includes 20 Subreddits channels and 16 Youtube Channels that focus on technology,
+            culture, and information. . The analysis revealed the following insights:
+        </p>
+        <p>1 - Reddit</p>
+        <p>
+            • Each subreddit witnesses an average of 50 new posts per day.
+            • On average, there are 40 comments per post on Each Subreddit.
+        </p>
+        <p>2 - YouTube</p>
+        <p>
+            • On average, each YouTube channel posts about 1 new video per day.
+            • The average number of comments per video is found to be
+            100.
+        </p>
+        </div>
+    </div>
+    </div>
+</div>
+
+
+<hr> 
+
+
+<div class="container">
+    <div class="row align-items-center">
+    <div class="col-lg-6 order-lg-2">
+        <div class="p-5">
+            {% load static %}
+            <img class="img-fluid" src="{% static 'sdc.jpg' %}" alt="a">
+        </div>
+    </div>
+    <div class="col-lg-6 order-lg-1">
+        <div class="p-5">
+        <h2 class="display-4">Sentiment Analysis</h2>
+        <p> According to Analysis that we received from collected DATA -  (i.e Comparative sentiment analysis of Reddit and YouTube comments )</p>
+        <p>• We have around 65000 Comments in Total</p>
+        <p>• Out of the total comments 47% of the Comments are Positive</p>
+        <p>• Out of the total comments 23% of the Comments are Negative</p>
+        <p>• Out of the total comments 30% of the Comments are Neutral</p>
+
+        </div>
+    </div>
+    </div>
+</div>
+
+<br><br><br><br><br><br><br><br>
+{% endblock  %}
+
+<br><br><br><br><br><br><br><br>
+<footer class="page-footer font-small blue fixed-bottom bg-dark">
+    <!-- Copyright -->
+        <div class="footer-copyright text-center py-2" style="color:aliceblue;">
+        Copyright © Socialgood.com All Rights Reserved
+        </div>
+        <!-- Copyright -->
+</footer>
+
+<!-- Bootstrap and jQuery JS dependencies -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>

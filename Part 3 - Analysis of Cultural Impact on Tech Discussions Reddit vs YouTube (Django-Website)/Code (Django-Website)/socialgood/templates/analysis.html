@@ -1,0 +1,384 @@
+<!-- demoanalysis.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Latest Dashboard</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        /* Custom styles for the graph cards */
+        .graph-card {
+            margin-bottom: 20px;
+        }
+        /* Add this to your CSS or in a <style> tag in your HTML head */
+            .description-overlay {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                background-color: rgba(255, 255, 255, 0.8);
+                padding: 10px;
+                border-radius: 5px;
+                text-align: center;
+                display: none;
+            }
+            
+            .card:hover .description-overlay {
+                display: block;
+            }
+
+            .loader {
+                display: none;
+            }
+            .loader-container {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+            }
+            .loader {
+                border: 16px solid #f3f3f3; /* Light grey */
+                border-top: 16px solid #3498db; /* Blue */
+                border-radius: 50%;
+                margin-top: 10px;
+                width: 100px;
+                height: 100px;
+                animation: spin 2s linear infinite;
+            } 
+
+            .loader21 {
+                display: none;
+            }
+            .loader21 {
+                border: 16px solid #f3f3f3; /* Light grey */
+                border-top: 16px solid #3498db; /* Blue */
+                border-radius: 50%;
+                margin-top: 10px;
+                width: 100px;
+                height: 100px;
+                animation: spin 2s linear infinite;
+            }
+            .loader22 {
+                display: none;
+            }
+            .loader22 {
+                border: 16px solid #f3f3f3; /* Light grey */
+                border-top: 16px solid #3498db; /* Blue */
+                border-radius: 50%;
+                margin-top: 10px;
+                width: 100px;
+                height: 100px;
+                animation: spin 2s linear infinite;
+            }
+            .loader23 {
+                display: none;
+            }
+            .loader23 {
+                border: 16px solid #f3f3f3; /* Light grey */
+                border-top: 16px solid #3498db; /* Blue */
+                border-radius: 50%;
+                margin-top: 10px;
+                width: 100px;
+                height: 100px;
+                animation: spin 2s linear infinite;
+            }
+
+            .loader24 {
+                display: none;
+            }
+            .loader24 {
+                border: 16px solid #f3f3f3; /* Light grey */
+                border-top: 16px solid #3498db; /* Blue */
+                border-radius: 50%;
+                margin-top: 10px;
+                width: 100px;
+                height: 100px;
+                animation: spin 2s linear infinite;
+            }
+            @keyframes spin {
+                0% { transform: rotate(0deg); }
+                100% { transform: rotate(360deg); }
+            }
+
+            /* Dashed border */
+            hr.dashed {
+            border-top: 3px dashed #bbb;
+            }
+            
+    </style>
+</head>
+<body>
+
+{% extends 'index.html' %}
+{% block content %}
+    <style>
+    .card-img-top {
+        width: 100%;
+        height: 20rem;
+        object-fit: cover;
+    }
+    .info {
+        background-color: #e7f3fe;
+        border-left: 6px solid #2196F3;
+      }
+    </style>
+    <hr>
+    <div class="jumbotron jumbotron-fluid bg-dark text-white">
+        <div class="container">
+        <h1>(Socialgood) Project 3 Implementation Details</h1>
+        <h3>Dynamic Final Implementation of Socialgood Data Analysis...</h3>
+        </div>
+    </div>
+
+    <div class="alert alert-primary d-flex align-items-center" role="alert">
+        <h3>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-exclamation-triangle-fill flex-shrink-0 me-2" viewBox="0 0 16 16" role="img" aria-label="Warning:">
+          <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+        </svg>
+        
+        </h3>
+        <div>
+            <h3><strong> Please Select the Parameters Accordingly... </strong></h3>
+        </div>
+    </div>
+
+    <hr>
+    <div>
+        <div class="container alert alert-dark">
+            <h5><strong>Analysis 1... </strong></h3>
+        </div>
+    <div class="row">
+        <div class="col-md-8">
+            <div class="card mb-4 text-center">
+                {% load static %}
+                <img src="{% static 'fda.jpg' %}" alt="Exploring the Language Landscape: Most Used Words" class="card-img-top">
+                <div class="loader-container">
+                    <div class="loader21"></div>
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">Exploring the Language Landscape: Most Used Words</h5>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <button type="button" class="btn btn-dark btn-block" data-toggle="modal" data-target="#modalImage21">
+                            View Statistics
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Add another card here (copy the above code) -->
+
+        <div class="col-md-4">
+            <div>
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                      <li class="breadcrumb-item active" aria-current="page">Please Select the Below Inputs</li>
+                    </ol>
+                  </nav>
+            </div> 
+            <form action="{% url 'fda' %}" method="POST">
+                {% csrf_token %}
+                <select id="option" for="option" name="option" class="form-control">
+                    <option value="subreddit_posts">Subreddit Posts</option>
+                    <option value="subreddit_comments">Subreddit Comments</option>
+                    <option value="youtube_videos">Youtube Videos</option>
+                    <option value="youtube_comments">Youtube Comments</option>
+                </select>
+                <br><br>
+                <div class="form-group">
+                    <div>
+                        <label for="start">Select Date: </label>
+                        <input type="date" for="start" id="start" name="start" value="2023-11-01" min="2023-11-01"/>
+                    </div>
+                    <br>
+                    <div class="container info">
+                        <label><strong>*Note !! </strong>The Data is Only Available from (Novermber 1st 2023)  and Max (Till Today) Otherwise Empty Image will be displayed so please select the date accordingly...</label>
+                    </div>
+                    <br>
+                </div>
+            
+              <div class="row">
+                <div class="col-md-12">
+                    <button type="submit" class="btn btn-primary btn-block">
+                    Submit
+                    </button>
+                </div>
+            </div>
+            </form>
+
+        </div>
+    </div>
+    </div>
+
+    <hr class="dashed">
+
+    <div>
+        <div class="container alert alert-dark">
+            <h5><strong>Analysis 2... </strong></h3>
+        </div>
+    <div class="row">
+        <div class="col-md-8">
+            <div class="card mb-4 text-center">
+                {% load static %}
+                    <img src="{% static 'fdb.jpg' %}" alt="Unveiling Common Ground: Top 30 Words Shared Between Two Social Media Platforms" class="card-img-top">
+                <div class="loader-container">
+                    <div class="loader21"></div>
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">Unveiling Common Ground: Top 30 Words Shared Between Two Social Media Platforms</h5>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <button type="button" class="btn btn-dark btn-block" data-toggle="modal" data-target="#modalImage22">
+                            View Statistics
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Add another card here (copy the above code) -->
+
+        <div class="col-md-4">
+            <div>
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                      <li class="breadcrumb-item active" aria-current="page">Please Select the Below Inputs</li>
+                    </ol>
+                  </nav>
+            </div>
+            <form action="{% url 'fdb' %}" method="POST"> 
+                {% csrf_token %}
+                <select id="option1" for="option1" name="option1" class="form-control">
+                    <option value="subreddit_posts">Subreddit Posts</option>
+                    <option value="subreddit_posts_comments">Subreddit Comments</option>
+                    <option value="youtube_channel_videos">Youtube Videos</option>
+                    <option value="youtube_videos_comments">Youtube Comments</option>
+                </select>
+              <br><br>
+                <select id="option2" for="option2" name="option2" class="form-control">
+                    <option value="subreddit_posts">Subreddit Posts</option>
+                    <option value="subreddit_posts_comments">Subreddit Comments</option>
+                    <option selected = true value="youtube_channel_videos">Youtube Videos</option>
+                    <option value="youtube_videos_comments">Youtube Comments</option>
+                </select>
+              <br><br>
+            <div class="form-group">
+                <div>
+                    <label for="start2">Select Date: </label>
+                    <input type="date" for="start2" id="start2" name="start2" value="2023-11-01" min="2023-11-01"/>
+                </div>
+                <br>
+                <div class="container info">
+                    <label><strong>*Note !! </strong>The Data is Only Available from (Novermber 1st 2023)  and Max (Till Today) Otherwise Empty Image will be displayed so please select the date accordingly...</label>
+                </div>
+                <br>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <button type="submit" class="btn btn-primary btn-block">
+                        Submit
+                    </button>
+                </div>
+            </div>
+            </form>
+        </div>
+    </div>
+    </div>
+
+    <hr class="dashed">
+    
+    <div>
+        <div class="container alert alert-dark">
+            <h5><strong>Analysis 3... </strong></h3>
+        </div>
+    <div class="row">
+        <div class="col-md-8">
+            <div class="card mb-4 text-center">
+                {% load static %}
+                <img src="{% static 'fdc.jpg' %}" alt="Analyzing User Engagement Across Social Media Platforms" class="card-img-top">
+                <div class="loader-container">
+                    <div class="loader21"></div>
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">Analyzing User Engagement Across Social Media Platforms</h5>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <button type="button" class="btn btn-dark btn-block" data-toggle="modal" data-target="#modalImage23">
+                            View Statistics
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Add another card here (copy the above code) -->
+
+        <div class="col-md-4">
+            <div>
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                      <li class="breadcrumb-item active" aria-current="page">Please Select the Below Inputs</li>
+                    </ol>
+                  </nav>
+            </div> 
+            <form action="{% url 'fdc' %}" method="POST">
+                {% csrf_token %}
+                <select id="coption1" for="coption1" name="coption1" class="form-control">
+                    <option value="subreddit_posts">Subreddit Posts</option>
+                    <option value="subreddit_posts_comments">Subreddit Comments</option>
+                    <option value="youtube_channel_videos">Youtube Videos</option>
+                    <option value="youtube_videos_comments">Youtube Comments</option>
+                </select>
+              <br><br>
+                <select id="coption2" for="coption2" name="coption2" class="form-control">
+                    <option value="subreddit_posts">Subreddit Posts</option>
+                    <option value="subreddit_posts_comments">Subreddit Comments</option>
+                    <option selected = true value="youtube_channel_videos">Youtube Videos</option>
+                    <option value="youtube_videos_comments">Youtube Comments</option>
+                </select>
+              <br><br>
+              <div class="form-group">
+                <div>
+                    <label for="cstart2">Select Date: </label>
+                    <input type="date" for="cstart2" id="cstart2" name="cstart2" value="2023-11-01" min="2023-11-01"/>
+                </div>
+                <br>
+                <div class="container info">
+                    <label><strong>*Note !! </strong>The Data is Only Available from (Novermber 1st 2023)  and Max (Till Today) Otherwise Empty Image will be displayed so please select the date accordingly...</label>
+                </div>
+                <br>
+            </div>
+              <div class="row">
+                <div class="col-md-12">
+                    <button type="submit" class="btn btn-primary btn-block">
+                    Submit
+                    </button>
+                </div>
+            </div>
+        </form>
+        </div>
+    </div>
+    </div>
+    <hr class="dashed">
+
+
+
+
+    {% load static %}
+    {% include 'model.html' %}
+<!--<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>-->
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>\
+{% load static %}
+<script src="{% static '/scripts/demoscript.js' %}"></script>
+
+{% endblock %}
+</body>
+</html>
